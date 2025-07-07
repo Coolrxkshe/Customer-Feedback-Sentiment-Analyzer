@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Feedback Sentiment Analyzer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>📝 Customer Feedback Sentiment Analyzer</h1>
+
+        <form method="POST">
+            <textarea name="feedback" placeholder="Share your thoughts here..." required></textarea>
+            <button type="submit">🔍 Analyze Feedback</button>
+        </form>
+
+        {% if sentiment %}
+            <div class="result 
+                {% if 'Positive' in sentiment %}positive
+                {% elif 'Negative' in sentiment %}negative
+                {% else %}neutral{% endif %}">
+                Sentiment: {{ sentiment }}
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
